@@ -19,10 +19,6 @@ class load(object):
     def _load(self):
         self.db = json.load(open(self.location , "r"))
 
-    def dumpdb(self):
-        self.db = {}
-        return True
-
     def dump(self):
         try:
             json.dump(self.db , open(self.location, "w+"))
@@ -58,12 +54,12 @@ class load(object):
         if not key in self.db:
             return False
         del self.db[key]
-        self.dumpdb()
+        self.dump()
         return True
     
     def resetdb(self):
         self.db={}
-        self.dumpdb()
+        self.dump()
         return True
 
     def loadall(self):
