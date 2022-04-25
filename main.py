@@ -1,6 +1,6 @@
-import SynDB.SynDB
+import SynDB
 
-db = SynDB.load("test.db")
+db = SynDB.load("test.json")
 
 def main():
     while True:

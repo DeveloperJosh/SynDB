@@ -19,6 +19,10 @@ class load(object):
     def _load(self):
         self.db = json.load(open(self.location , "r"))
 
+    def dumpdb(self):
+        self.db = {}
+        return True
+
     def dump(self):
         try:
             json.dump(self.db , open(self.location, "w+"))
@@ -28,10 +32,10 @@ class load(object):
 
     def set(self , key: Union[str, int] , value):
         try:
-            self.db[str(key)] = value
-            self.dumpdb()
-        except Exception as e:
-            print("[X] Error Saving Values to Database : " + str(e))
+            self.db[key] = value
+            self.dump()
+            return True
+        except:
             return False
 
     def get(self , key: Union[str, int]):
