@@ -22,13 +22,13 @@ $ pip install syndb
 ### Exmaple
 
 ```python
-import SynDB
+import syndb
 
-db = SynDB.load("test.db", False)
+db = syndb.load("test.db", False)
 
-db.set("key1", "value1")
-db.get("key1")
-db.delete("key1")
+db.set("key", "value")
+db.get("key")
+db.delete("key")
 db.resetdb()
 db.dump() 
 db.loadall() # This will load all the data from the file

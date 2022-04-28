@@ -4,7 +4,7 @@ import signal
 import sys
 from typing import Union
 from threading import Thread
-class load(object):
+class SynDB(object):
 
     key_error = TypeError('Key/name must be a string!')
 
