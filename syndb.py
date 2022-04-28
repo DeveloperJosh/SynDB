@@ -4,6 +4,11 @@ import signal
 import sys
 from typing import Union
 from threading import Thread
+
+
+def load(location, auto_dump):
+    return SynDB(location, auto_dump)
+
 class SynDB(object):
 
     key_error = TypeError('Key/name must be a string!')
