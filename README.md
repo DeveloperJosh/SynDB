@@ -15,8 +15,8 @@ SynDB is a database that is json based, It is lightweight and fast, And it is ea
 * [Python](https://www.python.org/downloads/)
 ### Installing
 
-```git
-$ git clone https://github.com/DeveloperJosh/SynDB
+```py
+$ pip install syndb
 ```
 
 ### Exmaple
