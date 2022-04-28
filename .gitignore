@@ -6,4 +6,4 @@ test.json
 setup.py
 SynDB.egg-info
 dist
-main.py
+test.py
