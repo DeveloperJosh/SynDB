@@ -4,12 +4,9 @@ import signal
 import sys
 from typing import Union
 from threading import Thread
-
-## This is a WIP database for the Python
-
 class load(object):
 
-    key_string_error = TypeError('Key/name must be a string!')
+    key_error = TypeError('Key/name must be a string!')
 
     def __init__(self , location, auto_dump):
         self.location = os.path.expanduser(location)
@@ -62,7 +59,7 @@ class load(object):
             self._autodump()
             return True
         else:
-            raise self.key_string_error
+            raise self.key_error
 
     def get(self , key: Union[str, int]):
         try:
