@@ -6,7 +6,7 @@ You can use SynDB to store and retrieve data in a database, And it is very easy 
 
 ## Description
 
-SynDB is a database that is jsonbased, It is lightweight and fast, And it is easy to use.
+SynDB is a database that is json based, It is lightweight and fast, And it is easy to use.
 
 ## Getting Started
 
