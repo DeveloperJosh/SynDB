@@ -1,6 +1,8 @@
 # SynDB
 
-Simple overview of use/purpose.
+## Usage
+
+You can use SynDB to store and retrieve data in a database, And it is very easy to use.
 
 ## Description
 

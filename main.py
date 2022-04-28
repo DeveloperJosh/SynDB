@@ -1,6 +1,6 @@
 import SynDB
 
-db = SynDB.load("test.json")
+db = SynDB.load("test.json", False) ## If not set to True, the database will not be dumped automatically.
 
 def main():
     while True:

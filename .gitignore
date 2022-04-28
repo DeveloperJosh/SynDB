@@ -1,5 +1,7 @@
 __pycache__
 .env
 bot.py
+main.py
+tools.bat
 test.db
 test.json

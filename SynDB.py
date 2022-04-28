@@ -1,17 +1,29 @@
 import json
 import os
+import signal
+import sys
 from typing import Union
+from threading import Thread
 
-# This is a WIP database for the Python
+## This is a WIP database for the Python
 
 class load(object):
-    def __init__(self , location):
-        self.location = os.path.expanduser(location)
-        self.load(self.location)
 
-    def load(self , location):
+    key_string_error = TypeError('Key/name must be a string!')
+
+    def __init__(self , location, auto_dump):
+        self.location = os.path.expanduser(location)
+        self.load(self.location, auto_dump)
+        self.dthread = Thread(target=self._autodump)
+        if auto_dump is True:
+            self.dthread.start()
+        self.set_sigterm_handler()
+
+    def load(self , location, auto_dump):
        if os.path.exists(location):
            self._load()
+           self.loco = location
+           self.auto_dump = auto_dump
        else:
             self.db = {}
        return True
@@ -19,20 +31,38 @@ class load(object):
     def _load(self):
         self.db = json.load(open(self.location , "r"))
 
+    def _autodump(self):
+        if self.auto_dump is True:
+            self.dump()
+        else:
+            pass
+
+    def set_sigterm_handler(self):
+         def sigterm_handler():
+            if self.dthread is not None:
+                self.dthread.join()
+            sys.exit(0)
+         signal.signal(signal.SIGTERM, sigterm_handler)
+
     def dump(self):
         try:
-            json.dump(self.db , open(self.location, "w+"))
+            json.dump(self.db, open(self.location, "w"))
+            self.dthread = Thread(
+            target=json.dump,
+            args=(self.db, open(self.loco, 'wt')))
+            self.dthread.start()
+            self.dthread.join()
             return True
         except:
             return False
 
     def set(self , key: Union[str, int] , value):
-        try:
+        if isinstance(key, str):
             self.db[key] = value
-            self.dump()
+            self._autodump()
             return True
-        except:
-            return False
+        else:
+            raise self.key_string_error
 
     def get(self , key: Union[str, int]):
         try:
