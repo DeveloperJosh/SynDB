@@ -1,6 +1,6 @@
-import SynDB
+import syndb
 
-db = SynDB.load("test.json", False) ## If not set to True, the database will not be dumped automatically.
+db = syndb.load("test.json", False) ## If not set to True, the database will not be dumped automatically.
 
 db.set("test" , "test")
 db.set("test2" , "test2")
