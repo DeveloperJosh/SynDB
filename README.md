@@ -24,7 +24,7 @@ $ git clone https://github.com/DeveloperJosh/SynDB\
 ```python
 import SynDB
 
-db = SynDB.load("test.db")
+db = SynDB.load("test.db", False)
 
 db.set("key1", "value1")
 db.get("key1")
