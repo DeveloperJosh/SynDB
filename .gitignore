@@ -5,3 +5,6 @@ main.py
 tools.bat
 test.db
 test.json
+setup.py
+SynDB.egg-info
+dist
