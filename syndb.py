@@ -22,22 +22,20 @@ class SynDB(object):
         self.set_sigterm_handler()
 
     def load(self , location, auto_dump):
+       self.loco = location
+       self.auto_dump = auto_dump
        if os.path.exists(location):
            self._load()
-           self.loco = location
-           self.auto_dump = auto_dump
        else:
             self.db = {}
        return True
 
+    def _autodump(self):
+        if self.auto_dump:
+            self.dump()
+
     def _load(self):
         self.db = json.load(open(self.location , "r"))
-
-    def _autodump(self):
-        if self.auto_dump is True:
-            self.dump()
-        else:
-            pass
 
     def set_sigterm_handler(self):
          def sigterm_handler():
