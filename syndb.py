@@ -11,7 +11,7 @@ def load(location, auto_dump):
 
 class SynDB(object):
 
-    key_error = TypeError('Key/name must be a string!')
+    key_error = TypeError('Key must be a string!')
 
     def __init__(self , location, auto_dump):
         self.location = os.path.expanduser(location)
