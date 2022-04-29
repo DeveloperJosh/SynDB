@@ -56,8 +56,8 @@ class SynDB(object):
         except:
             return False
 
-    def set(self , key: Union[str, int] , value):
-        if isinstance(key, int or str):
+    def set(self , key, value):
+        if isinstance(key, str):
             self.db[key] = value
             self._autodump()
             return True
