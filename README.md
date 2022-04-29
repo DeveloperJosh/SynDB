@@ -1,5 +1,9 @@
 # SynDB
 
+[![Downloads](https://pepy.tech/badge/syndb)](https://pepy.tech/project/syndb)
+[![Downloads](https://pepy.tech/badge/syndb/month)](https://pepy.tech/project/syndb)
+[![Downloads](https://pepy.tech/badge/syndb/week)](https://pepy.tech/project/syndb)
+
 ## Usage
 
 You can use SynDB to store and retrieve data in a database, And it is very easy to use.
