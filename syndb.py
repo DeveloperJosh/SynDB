@@ -71,13 +71,11 @@ class SynDB(object):
             print("No Value Can Be Found for " + str(key))
             return False
 
-    def get_two(self, key, value):
-        if key in self.db:
-            if self.db[key] == value:
-                return True
-            else:
-                return False
-        else:
+    def get_two(self, key, key2):
+        try:
+            return print(self.db[key], self.db[key2])
+        except KeyError:
+            print("No Value Can Be Found for " + str(key))
             return False
 
     def delete(self , key):
