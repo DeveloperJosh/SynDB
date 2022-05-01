@@ -3,6 +3,7 @@
 [![Downloads](https://pepy.tech/badge/syndb)](https://pepy.tech/project/syndb)
 [![Downloads](https://pepy.tech/badge/syndb/month)](https://pepy.tech/project/syndb)
 [![Downloads](https://pepy.tech/badge/syndb/week)](https://pepy.tech/project/syndb)
+[![SynDB](https://snyk.io/advisor/python/SynDB/badge.svg)](https://snyk.io/advisor/python/SynDB)
 
 ## Usage
 
