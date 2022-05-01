@@ -9,17 +9,19 @@ db = syndb.load("test.db", False)
 
 @bot.command()
 async def set_channel(ctx):
-    db.set(ctx.guild.id, ctx.channel.id)
+    db.set(f"{ctx.guild.id}", ctx.channel.id)
     await ctx.send("Channel Set")
     db.dump()
 
 @bot.command()
 async def get_channel(ctx):
-    await ctx.send(db.get(ctx.guild.id))
+    await ctx.send(db.get(f"{ctx.guild.id}"))
+    channel = bot.get_channel(db.get(f"{ctx.guild.id}"))
+    await channel.send("test")
 
 @bot.command()
 async def reset_channel(ctx):
     db.delete(ctx.guild.id)
     await ctx.send("Channel Reset")
 
-bot.run(f"your_token_here")
+bot.run("Your Token")

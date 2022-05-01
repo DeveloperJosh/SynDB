@@ -21,6 +21,10 @@ class SynDB(object):
             self.dthread.start()
         self.set_sigterm_handler()
 
+    def __del__(self):
+        if self.dthread is not None:
+            self.dthread.join()
+
     def load(self , location, auto_dump):
        self.loco = location
        self.auto_dump = auto_dump
@@ -35,7 +39,10 @@ class SynDB(object):
             self.dump()
 
     def _load(self):
-        self.db = json.load(open(self.location , "r"))
+        try:
+            self.db = json.load(open(self.location, "r"))
+        except ValueError:
+            self.db = {}
 
     def set_sigterm_handler(self):
          def sigterm_handler():
@@ -64,19 +71,14 @@ class SynDB(object):
         else:
             raise self.key_error
 
-    def get(self , key: Union[str, int]):
+    def get(self , key):
         try:
-            return print(self.db[key])
+            return self.db[key]
         except KeyError:
-            print("No Value Can Be Found for " + str(key))
             return False
 
-    def get_two(self, key, key2):
-        try:
-            return print(self.db[key], self.db[key2])
-        except KeyError:
-            print("No Value Can Be Found for " + str(key))
-            return False
+    def get_all(self):
+        return self.db.keys()
 
     def delete(self , key):
         if not key in self.db:
@@ -97,3 +99,16 @@ class SynDB(object):
         else:
             print(self.db)
             return True
+
+    def append(self, key, value):
+        if not key in self.db:
+            self.db[key] = []
+        self.db[key].append(value)
+        self.dump()
+        return True
+
+    def exists(self, key):
+        if key in self.db:
+            return True
+        else:
+            return False
