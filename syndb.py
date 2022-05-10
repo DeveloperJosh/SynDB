@@ -2,7 +2,6 @@ import json
 import os
 import signal
 import sys
-from typing import Union
 from threading import Thread
 
 
@@ -71,6 +70,14 @@ class SynDB(object):
         else:
             raise self.key_error
 
+    def update(self, key, value):
+        if key in self.db:
+            self.db[key] = value
+            self._autodump()
+            return True
+        else:
+            return False
+
     def get(self , key):
         try:
             return self.db[key]
@@ -104,11 +111,27 @@ class SynDB(object):
         if not key in self.db:
             self.db[key] = []
         self.db[key].append(value)
-        self.dump()
+        self._autodump()
         return True
 
     def exists(self, key):
         if key in self.db:
+            return True
+        else:
+            return False
+
+    def list_create(self, key):
+        if not key in self.db:
+            self.db[key] = []
+            self._autodump()
+            return True
+        else:
+            return False
+
+    def list_add(self, key, value):
+        if key in self.db:
+            self.db[key].append(value)
+            self._autodump()
             return True
         else:
             return False
