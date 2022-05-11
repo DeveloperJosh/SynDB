@@ -135,4 +135,17 @@ class SynDB(object):
             return True
         else:
             return False
-            
+
+    def list_get(self, key):
+        if key in self.db:
+            return self.db[key]
+        else:
+            return False
+
+    def list_delete(self, key, value):
+        if key in self.db:
+            self.db[key].remove(value)
+            self._autodump()
+            return True
+        else:
+            return False
