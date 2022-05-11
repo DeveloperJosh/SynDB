@@ -70,6 +70,13 @@ class SynDB(object):
         else:
             raise self.key_error
 
+    def ping(self):
+        try:
+            self._load()
+            return True
+        except:
+            return False
+
     def update(self, key, value):
         if key in self.db:
             self.db[key] = value
