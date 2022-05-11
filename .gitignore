@@ -3,7 +3,6 @@ __pycache__
 bot.py
 test.db
 test.json
-setup.py
 SynDB.egg-info
 dist
 test.py
