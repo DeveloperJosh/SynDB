@@ -135,3 +135,4 @@ class SynDB(object):
             return True
         else:
             return False
+            
