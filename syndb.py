@@ -1,3 +1,4 @@
+from cgi import test
 import json
 import os
 import signal
@@ -23,6 +24,15 @@ class SynDB(object):
     def __del__(self):
         if self.dthread is not None:
             self.dthread.join()
+
+    def __version__(self):
+        return "1.7"
+
+    def __repr__(self):
+        return str(self.db)
+
+    def __str__(self):
+        return str(self.db)
 
     def load(self , location, auto_dump):
        self.loco = location
@@ -157,4 +167,13 @@ class SynDB(object):
             self._autodump()
             return True
         else:
+            return False
+
+    def set_two(self, key, value_name, value):
+        try:
+            data = {value_name: value}
+            self.db[key] = data
+            self._autodump()
+            return True
+        except:
             return False
