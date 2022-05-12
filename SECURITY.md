@@ -11,4 +11,6 @@ We support the version
 
 ## Reporting a Vulnerability
 
-## WIP
+## Join the server 
+
+here is the [Server](https://discord.gg/CaaGJfGNVD)
