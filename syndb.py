@@ -25,9 +25,6 @@ class SynDB(object):
         if self.dthread is not None:
             self.dthread.join()
 
-    def __version__(self):
-        return "1.7"
-
     def __repr__(self):
         return str(self.db)
 
