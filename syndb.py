@@ -166,11 +166,32 @@ class SynDB(object):
         else:
             return False
 
-    def set_two(self, key, value_name, value):
-        try:
-            data = {value_name: value}
-            self.db[key] = data
+    def dcreate(self, key):
+        if isinstance(key, str):
+            self.db[key] = {}
             self._autodump()
             return True
-        except:
+        else:
+            raise self.key_error
+
+    def dadd(self, key, value, value2):
+        if key in self.db:
+            self.db[key][value] = value2
+            self._autodump()
+            return True
+        else:
             return False
+
+    def dget(self, key, value):
+        if key in self.db:
+            return self.db[key][value]
+        else:
+            return False
+
+    def dmerge(self, name, name2):
+        name1 = self.db[name]
+        name_2 = self.db[name2]
+        name1.update(name_2)
+        self._autodump()
+        return True
+
