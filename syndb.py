@@ -1,9 +1,9 @@
-from cgi import test
 import json
 import os
 import signal
 import sys
 from threading import Thread
+import sqlite3
 
 
 def load(location, auto_dump):
@@ -194,4 +194,3 @@ class SynDB(object):
         name1.update(name_2)
         self._autodump()
         return True
-

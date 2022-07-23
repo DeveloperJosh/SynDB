@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(name="SynDB",
-    version="1.9",
+    version="1.10",
     description="simple database using json.",
     long_description_content_type="text/markdown",
     long_description=long_description,
